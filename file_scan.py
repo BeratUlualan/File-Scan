@@ -2,6 +2,7 @@ import time
 from datetime import datetime
 import json
 import qumulo
+import os
 from qumulo.rest_client import RestClient
 import logging
 
