@@ -23,15 +23,17 @@ logging.info('Connection established with {}'.format(cluster_address))
 
 # Script inputs
 directory_path = json_object['directory_path']
+time_periods = json_object['time_periods']
+file_sizes = json_object['file_sizes']
 
-time_periods = [7, 30, 90, 180, 365]
-file_sizes = [1024, 10240, 102400]
+# Dictionary definitions
 time_based_file_count = dict()
 time_based_file_size = dict()
 owner_based_file_size = dict()
 owner_based_file_count = dict()
 file_type_count = dict()
 file_size_count = dict()
+
 
 start_time = datetime.now().strftime("%s")
 
@@ -140,7 +142,6 @@ def tree_walk (objects):
 					next_page = ""
 
 objects = rc.fs.read_directory(path=directory_path, page_size=10000)['files']
-
 tree_walk (objects)
 
 print (time_based_file_count)
